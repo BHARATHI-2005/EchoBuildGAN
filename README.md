@@ -30,13 +30,11 @@ plans or engineering recommendations.
 
 ### Local setup
 
-The existing `environment.yml` targets Python 3.11 and PyTorch 2.4 with
-torchvision 0.19. Create that environment, install the UI dependencies, and
-start Streamlit from the repository root:
+The app's `requirements.txt` uses CPU-only PyTorch wheels to avoid downloading
+CUDA packages on Streamlit Cloud. Install the dependencies and start Streamlit
+from the repository root:
 
 ```powershell
-conda env create -f environment.yml
-conda activate pytorch-img2img
 python -m pip install -r requirements.txt
 Copy-Item .env.example .env
 # Edit .env and add your Cloudflare Workers AI account ID and API token locally
@@ -47,8 +45,8 @@ Open [http://localhost:8501](http://localhost:8501). The app also runs on a
 CPU; GPU acceleration is used automatically when CUDA is available. The
 development environment verified for this integration is Python 3.13.13,
 PyTorch 2.14.0+cpu, torchvision 0.29.1+cpu, and Streamlit 1.58.0. The project's
-declared Python 3.11/PyTorch 2.4 environment was not installed or separately
-verified here.
+For Streamlit Community Cloud, select Python 3.12 in the deployment's
+advanced settings.
 
 ### Enable hosted image generation
 
