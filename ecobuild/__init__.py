@@ -1,0 +1,1 @@
+"""EcoBuild GAN application helpers."""
